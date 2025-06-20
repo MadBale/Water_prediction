@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Water Potability Predictor</title>
+    <style>
+        body { font-family: Segoe UI, sans-serif; background: #f4f9f9; padding: 30px; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #36c1cb; text-align: center; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input[type="number"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
+        button { margin-top: 20px; padding: 10px 20px; background: #36c1cb; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .result { margin-top: 20px; font-size: 18px; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💧 Water Potability Prediction</h1>
+        <form method="post">
+            {% for field in ['pH', 'Hardness', 'Solids', 'Chloramines', 'Sulfate', 'Conductivity', 'Organic_carbon', 'Trihalomethanes', 'Turbidity'] %}
+                <label for="{{ field }}">{{ field }}</label>
+                <input type="number" step="any" name="{{ field }}" required>
+            {% endfor %}
+            <button type="submit">🔍 Predict</button>
+        </form>
+        {% if result %}
+            <div class="result">{{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+
